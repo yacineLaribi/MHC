@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+    {% block title %}
+    Browse  
+    {% endblock title %}
+    {% block content %}
+        {% if request.user.is_authenticated %}
+        This is the page where the products appear , {{user.username}}
+        {%endif%}
+    {% endblock content %}
+
