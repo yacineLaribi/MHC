@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,6 +8,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="{%static 'assets/imgs/template/favicon.svg'%}">
+    <link href="{%static 'assets/css/style_version%3D4.1.css'%}" rel="stylesheet">
 
     <title>{% block title %}{% endblock title %}| Stagini</title>
     {% block head %}
@@ -15,59 +18,65 @@
   <style>
     body{
         min-height: 100vh;
-
-    }
-    footer{
-        position: absolute;
-        bottom: 0;
-        left: 0;
     }
   </style>
   <body>
-    <nav
-      class="py-6 px-6 flex justify-between items-center border-b border-gray-200"
-    >
-      <a href="/" class="text-xl font-semibold">Stagini Logo</a>
-      <div class="space-x-5">
-        <a
-          href="#"
-          class="text-lg font-semibold hover:text-gray-500"
-          >Browse All</a
-        >
-        {% if request.user.is_authenticated %}
-        <a href="#" class="text-lg font-semibold hover:text-gray-500"
-          >New Internship</a>
-        <a
-          href="#"
-          class="px-5 py-2 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700"
-          >Inbox</a
-        >
-        <a
-          href="#"
-          class="px-5 py-2 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700"
-          >Dashboard</a
-        >
-        <a
-          href="{%url 'logout'%}"
-          class="px-5 py-2 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-700"
-          >Logout</a
-        >
-        {%else%}
-        <a
-          href="{%url 'signup'%}"
-          class="px-5 py-2 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700"
-          >Sign up</a
-        >
-        <a
-          href="{%url 'login'%}"
-          class="px-5 py-2 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700"
-          >Log in</a
-        >
-        {%endif%}
+
+        <header class="header sticky-bar">
+      <div class="container">
+        <div class="main-header">
+          <div class="header-left">
+            <div class="header-logo"><a class="d-flex" href="{%url 'home'%}"><img alt="jobBox" src="{% static 'assets/imgs/brands/logo-new.svg'%} "></a></div>
+          </div>
+          <div class="header-nav">
+            <nav class="nav-main-menu">
+              <ul class="main-menu" >
+                <li ><a href="{%url 'home'%}">Home</a></li>
+                  {% if request.user.category == "student" %}
+                  <li><a href="{%url 'browse'%}">Find Internship</a></li>
+                  <li><a href="#">Recruiters</a></li>
+                  {% elif request.user.category == "entreprise" %}
+                  <li><a href="#">Candidates</a></li>
+                <li class="dashboard"><a href="{%url 'new'%}">Add Internship</a></li>
+                  {% elif not request.user.is_authenticated %}
+                  <li><a href="#">Recruiters</a></li>
+                  <li><a href="#">Candidates</a></li>
+                  {% endif %}
+                <li><a href="#">Blog</a></li>
+                {% if request.user.is_authenticated %}
+
+                <li class="dashboard"><a href="" target="_blank">Dashboard</a></li>
+              <a class="btn btn-default btn-shadow ml-40 hover-up" href="{%url 'logout'%}">Log out</a></div>
+              </ul>
+            </nav>
+                {% else %}
+          <div class="header-right">
+            <div class="block-signin"><a class="text-link-bd-btom hover-up" href="{%url 'signup'%}">Register</a>
+            <a class="btn btn-default btn-shadow ml-40 hover-up" href="{%url 'login'%}">Log in</a></div>
+          </div>
+        </div>
       </div>
-    </nav>
+
+              {% endif %}
+            <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
+          </div>
+    </header>
     <div class="py-6 px-6 ">
       {% block content %} {% endblock content %}
     </div>
   </body>
+  <script src="{%static 'assets/js/vendor/modernizr-3.6.0.min.js'%}"></script>
+    <script src="{%static 'assets/js/vendor/jquery-3.6.0.min.js'%}"></script>
+    <script src="{%static 'assets/js/vendor/jquery-migrate-3.3.0.min.js'%}"></script>
+    <script src="{%static 'assets/js/vendor/bootstrap.bundle.min.js'%}"></script>
+    <script src="{%static 'assets/js/plugins/waypoints.js'%}"></script>
+    <script src="{%static 'assets/js/plugins/wow.js'%}"></script>
+    <script src="{%static 'assets/js/plugins/magnific-popup.js'%}"></script>
+    <script src="{%static 'assets/js/plugins/perfect-scrollbar.min.js'%}"></script>
+    <script src="{%static 'assets/js/plugins/select2.min.js'%}"></script>
+    <script src="{%static 'assets/js/plugins/isotope.js'%}"></script>
+    <script src="{%static 'assets/js/plugins/scrollup.js'%}"></script>
+    <script src="{%static 'assets/js/plugins/swiper-bundle.min.js'%}"></script>
+    <script src="{%static 'assets/js/plugins/counterup.js'%}"></script>
+    <script src="{%static 'assets/js/main_v%3D4.1.js'%}"></script>
 </html>

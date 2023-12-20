@@ -30,7 +30,7 @@ def login_user(request):
 
         if user is not None:
             login(request,user)
-            return redirect('home')  # Replace 'dashboard' with the name or URL pattern of your dashboard view
+            return redirect('browse')  # Replace 'dashboard' with the name or URL pattern of your dashboard view
 
         else:
             # Handle unsuccessful login
@@ -44,5 +44,7 @@ from django.contrib.auth import logout
 def logout_view(request):
     logout(request)
     # Redirect to a success page.
-    return render(request, 'index.html')
+    # return render(request, 'index.html')
+    return redirect('home')
+
     

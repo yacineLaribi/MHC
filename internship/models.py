@@ -4,7 +4,6 @@ from core.models import CustomUser
 User = CustomUser()
 # Create your models here
  
-
 #creating a table for Categories
 class Category (models.Model):
     name=models.CharField(max_length=250)
