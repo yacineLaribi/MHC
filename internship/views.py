@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect 
-from .forms import NewItemForm
+from .forms import NewItemForm , EditItemForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render ,get_object_or_404
 from .models import Item , Category
@@ -33,7 +33,7 @@ def new(request):
 
     return render(request,'form.html',{
         'form':form,
-        'title':'New item',
+        'title':'Add Internship',
     })
 
 
@@ -56,13 +56,13 @@ def edit(request,pk):
 
         if form.is_valid():
             form.save()          
-            return redirect('item:detail',pk=item.id)
+            return redirect('profile')
     else:   
         form = EditItemForm(instance=item)
 
 
     return render(request,'form.html',{
         'form':form,
-        'title':'Edit item',
+        'title':'Edit Internship',
     })
 

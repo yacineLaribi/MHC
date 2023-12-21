@@ -2,6 +2,11 @@ from django.shortcuts import render,redirect
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from core.models import CustomUser
+from internship.models import Item
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -47,4 +52,11 @@ def logout_view(request):
     # return render(request, 'index.html')
     return redirect('home')
 
-    
+@login_required
+def profile(request):
+    user=CustomUser()
+    items=Item.objects.filter(created_by=request.user)
+    return render(request,'profile.html',{
+        'user':user,
+        'items':items,
+    })    
