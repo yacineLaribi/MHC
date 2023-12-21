@@ -60,3 +60,15 @@ def profile(request):
         'user':user,
         'items':items,
     })    
+
+def recruiters(request):
+    users=CustomUser.objects.filter(category='entreprise')
+    return render(request,'accounts/recruiters.html',{
+        'users':users,
+    })  
+
+def candidates(request):
+    users=CustomUser.objects.filter(category='student')
+    return render(request,'accounts/candidates.html',{
+        'users':users,
+    })  

@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect 
-from .forms import NewItemForm , EditItemForm
+from .forms import NewItemForm , EditItemForm ,ItemSearchForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render ,get_object_or_404
 from .models import Item , Category
@@ -8,9 +8,17 @@ from .models import Item , Category
 
 # Create your views here.
 def internships(request):
+    categories=Category.objects.all()
     items=Item.objects.filter(is_active=True)
+    search_form = ItemSearchForm(request.GET)
+    if search_form.is_valid():
+        search_query = search_form.cleaned_data['search_query']
+        items = items.filter(name__icontains=search_query)
+
     return render(request,'internships.html',{
         'items':items,
+        'search_form': search_form ,
+        'categories': categories ,
     })
     
 

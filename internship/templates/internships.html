@@ -64,16 +64,12 @@
               <h3 class="wow animate__animated animate__fadeInUp"><span class="color-brand-2">{{items.count}} Intershhips</span> Available Now</h3>
               <div class="font-sm color-text-paragraph-2 mt-10 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero repellendus magni, <br class="d-none d-xl-block">atque delectus molestias quis?</div>
               <div class="form-find text-start mt-40 wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
-                <form>
+                <form method="get">
                   <div class="box-industry">
                     <select class="form-input mr-10 select-active input-industry">
-                      <option value="0">Industry</option>
-                      <option value="1">Software</option>
-                      <option value="2">Finance</option>
-                      <option value="3">Recruting</option>
-                      <option value="4">Management</option>
-                      <option value="5">Advertising</option>
-                      <option value="6">Development</option>
+                     {% for category in categories %}
+                        <option value="">{{category.name}}</option>
+                     {% endfor %}
                     </select>
                   </div>
                   <select class="form-input mr-10 select-active">
@@ -85,7 +81,7 @@
                   
                 
                   </select>
-                  <input class="form-input input-keysearch mr-10" type="text" placeholder="Your keyword... ">
+                  <input class="form-input input-keysearch mr-10" name="search_query" type="text" placeholder="Your keyword... ">
                   <button class="btn btn-default btn-find font-sm">Search</button>
                 </form>
               </div>

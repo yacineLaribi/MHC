@@ -16,6 +16,10 @@
     {% endblock head %}
   </head>
   <style>
+      {% block style %}
+
+    {% endblock style %}
+
     body{
         min-height: 100vh;
     }
@@ -34,15 +38,16 @@
                 <li ><a href="{%url 'home'%}">Home</a></li>
                   {% if request.user.category == "student" %}
                   <li><a href="{%url 'browse'%}">Find Internship</a></li>
-                  <li><a href="#">Recruiters</a></li>
+                  <li><a href="{%url 'recruiters'%}">Recruiters</a></li>
                   {% elif request.user.category == "entreprise" %}
                   <li><a href="{%url 'browse'%}">Find Internship</a></li>
+                  <li><a href="{%url 'candidates'%}">Candidates</a></li>
                 <li class="dashboard"><a href="{%url 'new'%}">Add Internship</a></li>
                   {% elif not request.user.is_authenticated %}
-                  <li><a href="#">Recruiters</a></li>
-                  <li><a href="#">Candidates</a></li>
+                  <li><a href="{%url 'recruiters'%}">Recruiters</a></li>
+                  <li><a href="{%url 'candidates'%}">Candidates</a></li>
                   {% endif %}
-                <li><a href="#">Blog</a></li>
+                <li><a href="https://www.notion.so/5e16b4e71ac44f37b28b840a8fea8f05?v=2aeca89769d84d62bb51cc89fff041ca" target='_blank'>Blog</a></li>
                 {% if request.user.is_authenticated %}
 
                 <li class="dashboard"><a href="{%url 'profile'%}">Dashboard</a></li>
@@ -74,60 +79,35 @@
               <!-- mobile menu start-->
               <nav>
                 <ul class="mobile-menu font-heading">
-                  <li class="has-children"><a class="active" href="index.html">Home</a>
-                  
-                  </li>
-                  <li class="has-children"><a href="jobs-grid.html">Find a Job</a>
-                    <ul class="sub-menu">
-                      <li><a href="jobs-grid.html">Jobs Grid</a></li>
-                      <li><a href="jobs-list.html">Jobs List</a></li>
-                      <li><a href="job-details.html">Jobs Details  </a></li>
-                      <li><a href="job-details-2.html">Jobs Details 2              </a></li>
-                    </ul>
-                  </li>
-                  <li class="has-children"><a href="companies-grid.html">Recruiters</a>
-                    <ul class="sub-menu">
-                      <li><a href="companies-grid.html">Recruiters</a></li>
-                      <li><a href="company-details.html">Company Details</a></li>
-                    </ul>
-                  </li>
-                  <li class="has-children"><a href="candidates-grid.html">Candidates</a>
-                    <ul class="sub-menu">
-                      <li><a href="candidates-grid.html">Candidates Grid</a></li>
-                      <li><a href="candidate-details.html">Candidate Details</a></li>
-                    </ul>
-                  </li>
-                  <li class="has-children"><a href="blog-grid.html">Pages</a>
-                    <ul class="sub-menu">
-                      <li><a href="page-about.html">About Us</a></li>
-                      <li><a href="page-pricing.html">Pricing Plan</a></li>
-                      <li><a href="page-contact.html">Contact Us</a></li>
-                      <li><a href="page-register.html">Register</a></li>
-                      <li><a href="page-signin.html">Signin</a></li>
-                      <li><a href="page-reset-password.html">Reset Password</a></li>
-                      <li><a href="page-content-protected.html">Content Protected</a></li>
-                    </ul>
-                  </li>
-                  <li class="has-children"><a href="blog-grid.html">Blog</a>
-                    <ul class="sub-menu">
-                      <li><a href="blog-grid.html">Blog Grid</a></li>
-                      <li><a href="blog-grid-2.html">Blog Grid 2</a></li>
-                      <li><a href="blog-details.html">Blog Single</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="{%url 'profile'%}">Dashboard</a></li>
+                 <li ><a href="{%url 'home'%}">Home</a></li>
+                  {% if request.user.category == "student" %}
+                  <li><a href="{%url 'browse'%}">Find Internship</a></li>
+                  <li><a href="{%url 'recruiters'%}">Recruiters</a></li>
+                  {% elif request.user.category == "entreprise" %}
+                  <li><a href="{%url 'browse'%}">Find Internship</a></li>
+                  <li><a href="{%url 'candidates'%}">Candidates</a></li>
+                <li class="dashboard"><a href="{%url 'new'%}">Add Internship</a></li>
+                  {% elif not request.user.is_authenticated %}
+                  <li><a href="{%url 'recruiters'%}">Recruiters</a></li>
+                  <li><a href="{%url 'candidates'%}">Candidates</a></li>
+                  {% endif %}
+                <li><a href="https://www.notion.so/5e16b4e71ac44f37b28b840a8fea8f05?v=2aeca89769d84d62bb51cc89fff041ca">Blog</a></li>
+                {% if request.user.is_authenticated %}
+
+                <li class="dashboard"><a href="{%url 'profile'%}">Dashboard</a></li>
+              <a class="btn btn-default btn-shadow ml-40 hover-up" href="{%url 'logout'%}">Log out</a>
+              
                 </ul>
               </nav>
+                {% else %}
+          <div class="header-right">
+            <div class="block-signin"><a class="text-link-bd-btom hover-up" href="{%url 'signup'%}">Register</a>
+            <a class="btn btn-default btn-shadow ml-40 hover-up" href="{%url 'login'%}">Log in</a></div>
+          </div>
+                {% endif %}
             </div>
             <div class="mobile-account">
               <h6 class="mb-10">Your Account</h6>
-              <ul class="mobile-menu font-heading">
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Work Preferences</a></li>
-                <li><a href="#">Account Settings</a></li>
-                <li><a href="#">Go Pro</a></li>
-                <li><a href="page-signin.html">Sign Out</a></li>
-              </ul>
             </div>
             <div class="site-copyright">Copyright 2023 © setagini. <br>Designed by Phoenix team.</div>
           </div>

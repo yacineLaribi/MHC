@@ -3,6 +3,21 @@
     {% block title %}
     Home 
     {% endblock title %}
+    {% block head %}
+    <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+              window.voiceflow.chat.load({
+                verify: { projectID: '6583d6ec4246597ee12617d9' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production'
+              });
+            }
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+      </script>
+    {% endblock head %}
     {% block content %}
     {% comment %} <div id="preloader-active">
       <div class="preloader d-flex align-items-center justify-content-center">
@@ -62,8 +77,8 @@
         <div class="mobile-header-content-area">
           <div class="perfect-scroll">
             <div class="mobile-search mobile-header-border mb-30">
-              <form action="#">
-                <input type="text" placeholder="Search…"><i class="fi-rr-search"></i>
+              <form action="get">
+                <input type="text" placeholder="Search…" name="search_query"><i class="fi-rr-search"></i>
               </form>
             </div>
             <div class="mobile-menu-wrap mobile-header-border">
@@ -191,7 +206,7 @@
               <div class="col-xl-8 col-lg-12">
                 <div class="block-banner">
                   <h1 class="heading-banner wow animate__animated animate__fadeInUp">The <span class="color-brand-2">Easiest Way</span><br class="d-none d-lg-block">to Get Your Intership</h1>
-                  <div class="banner-description mt-20 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">Each month, more than 3 million job seekers turn to <br class="d-none d-lg-block">website in their search for work, making over 140,000 <br class="d-none d-lg-block">applications every single day</div>
+                  <div class="banner-description mt-20 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">Stagini is a web application to solve the problem of the link between companies and interns wish they can easily find their need.<br class="d-none d-lg-block"><br class="d-none d-lg-block"></div>
                   <div class="form-find mt-40 wow animate__animated animate__fadeIn" data-wow-delay=".2s">
                     <form>
                       <div class="box-industry">
@@ -627,7 +642,10 @@
                         
                         </body>
                         
-                        </html></option>
+                        </html>
+                        
+                        </option>
+
                         <option value="AD">Alger</option>
                         <option value="AO">Oran</option>
                         <option value="AI">Telmcen</option>
@@ -638,7 +656,8 @@
                       
             
                       </select>
-                      <input class="form-input input-keysearch mr-10" type="text" placeholder="Your keyword... ">
+                    <form action="get">  
+                      <input class="form-input input-keysearch mr-10" type="text" name="search_query" placeholder="Your keyword... ">
                       <button class="btn btn-default btn-find font-sm">Search</button>
                     </form>
                   </div>
@@ -1984,7 +2003,7 @@
             <p class="font-lg color-text-paragraph-2 wow animate__animated animate__fadeInUp">Get the latest news, updates and tips</p>
           </div>
         </div>
-        <div class="container">
+        <div class="container "style="scale:1 !importan; width:70% !important;">
           <div class="mt-50">
             <div class="box-swiper style-nav-top">
               <div class="swiper-container swiper-group-3 swiper">
@@ -1992,8 +2011,8 @@
                   <!--blog1-->
                   <div class="swiper-slide">
                     <div class="card-grid-3 hover-up wow animate__animated animate__fadeIn">
-                      <div class="text-center card-grid-3-image"><a href="#">
-                          <figure><img alt="jobBox" src="{%static 'assets/imgs/page/homepage1/img-news1.png'%}"></figure></a></div>
+                      <div class="text-center card-grid-3-image" style="align-self:center;"><a href="#">
+                          <figure><img alt="jobBox" src="{%static 'assets/imgs/page/homepage1/img-news1.png'%}" style="height: 250px !important; width:auto !important;"></figure></a></div>
                       <div class="card-block-info">
                         <div class="tags mb-15"><a class="btn btn-tag" href="blog-grid.html">News</a></div>
                         <h5><a href="blog-details.html">21 Job Interview Tips: How To Make a Great Impression</a></h5>

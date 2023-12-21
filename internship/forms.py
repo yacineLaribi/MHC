@@ -23,3 +23,5 @@ class EditItemForm(forms.ModelForm):
         for field_name in self.fields:
             self.fields[field_name].required = True
 
+class ItemSearchForm(forms.Form):
+    search_query = forms.CharField(label='Search', max_length=100)
