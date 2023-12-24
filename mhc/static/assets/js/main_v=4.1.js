@@ -144,7 +144,7 @@
                 $this.siblings("ul").slideDown();
             }
         }
-    });*/
+    });
     /*--- language currency active ----*/
     $(".mobile-language-active").on("click", function(e) {
         e.preventDefault();

@@ -61,23 +61,23 @@
         <div class="container">
           <div class="banner-hero banner-single banner-single-bg">
             <div class="block-banner text-center">
-              <h3 class="wow animate__animated animate__fadeInUp"><span class="color-brand-2">{{items.count}} Intershhips</span> Available Now</h3>
+              <h3 class="wow animate__animated animate__fadeInUp"><span class="color-brand-2">{{global_items.count}} Intershhips</span> Available Now</h3>
               <div class="font-sm color-text-paragraph-2 mt-10 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero repellendus magni, <br class="d-none d-xl-block">atque delectus molestias quis?</div>
               <div class="form-find text-start mt-40 wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
                 <form method="get">
                   <div class="box-industry">
-                    <select class="form-input mr-10 select-active input-industry">
+                    <select class="form-input mr-10 select-active input-industry" name="">
                      {% for category in categories %}
-                        <option value="">{{category.name}}</option>
+                        <option>{{category.name}}</option>
                      {% endfor %}
                     </select>
                   </div>
                   <select class="form-input mr-10 select-active">
                     <option value="">Location</option>
-                    <option value="Al">Alger</option>
-                    <option value="Or">Oran</option>
-                    <option value="Tl">Telmcen</option>
-                    <option value="An">Annaba</option>
+                    <option value="">Alger</option>
+                    <option value="">Oran</option>
+                    <option value="">Telmcen</option>
+                    <option value="">Annaba</option>
                   
                 
                   </select>
@@ -101,7 +101,7 @@
                     <div class="col-xl-6 col-lg-5">
                       <span class="text-small text-showing"
                         >Showing <strong> {{items.count}} </strong>of
-                        <strong>{{items.count}} </strong>Internships</span
+                        <strong>{{global_items.count}} </strong>Internships</span
                       >
                     </div>
                     <div class="col-xl-6 col-lg-7 text-lg-end mt-sm-15">

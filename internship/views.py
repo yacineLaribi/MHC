@@ -9,13 +9,16 @@ from .models import Item , Category
 # Create your views here.
 def internships(request):
     categories=Category.objects.all()
+    global_items=Item.objects.filter(is_active=True)
     items=Item.objects.filter(is_active=True)
     search_form = ItemSearchForm(request.GET)
     if search_form.is_valid():
         search_query = search_form.cleaned_data['search_query']
         items = items.filter(name__icontains=search_query)
 
+
     return render(request,'internships.html',{
+        'global_items':global_items,
         'items':items,
         'search_form': search_form ,
         'categories': categories ,
