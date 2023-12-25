@@ -113,7 +113,7 @@
     <div class="card__title">{{user.username}}</div>
     <div class="card__subtitle">{{user.profile}}</div>
     <div class="card__wrapper">
-        <button class="card__btn">Profile</button>
+        <button class="card__btn"><a href="{% url 'account' user.id %}">Profile</a></button>
         <button class="card__btn card__btn-solid">Chat</button>
     </div>
 </div>

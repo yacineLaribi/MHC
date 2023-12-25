@@ -10,11 +10,11 @@ from .models import Item , Category
 def internships(request):
     categories=Category.objects.all()
     global_items=Item.objects.filter(is_active=True)
-    items=Item.objects.filter(is_active=True)
+    items=Item.objects.filter(is_active=True)[0:12]
     search_form = ItemSearchForm(request.GET)
     if search_form.is_valid():
         search_query = search_form.cleaned_data['search_query']
-        items = items.filter(name__icontains=search_query)
+        items = Item.objects.filter(is_active=True).filter(name__icontains=search_query)[0:12]
 
 
     return render(request,'internships.html',{
